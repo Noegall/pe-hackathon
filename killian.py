@@ -11,6 +11,7 @@ ax = a.plot("pl_masse","pl_rade",style="xb",logx=True,ms=1)
 b.plot("pl_masse","pl_rade",style="or",logx=True,ms=1, ax=ax)
 
 
+#le graph ressemble fortmement à ce qu'on a sur le site web
 c = df[["pl_orbper","pl_insol","tran_flag"]][df["tran_flag"] == 1]
 d = df[["pl_orbper","pl_insol","tran_flag"]][df["tran_flag"] == 0]
 ax = c.plot("pl_orbper","pl_insol",style="xb",loglog=True,ms=1)
@@ -31,8 +32,24 @@ df = df.drop("ima_flag",axis="columns")
 df = df.drop("dkin_flag",axis="columns")
 df = df.drop_duplicates()
 
-# -
+# +
+# nombre de découvertes par années
+dico = {}
+df1 = df['disc_year']
+for c in df1:
+    if c in dico:
+        dico[c] += 1
+    else:
+        dico[c] = 1
 
+
+df2 = pd.DataFrame(dict(years = list(dico.keys()),number = list(dico.values())))
+df2 = df2.sort_values('years')
+
+plt.bar(years, number, data=df2, tick_label=years)
+plt.xticks(rotation=60, ha='right')
+plt.show()
+# -
 
 
 
