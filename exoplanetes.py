@@ -82,3 +82,5 @@ tab[mask1].pivot_table(values=['nb_etoile','nb_lune','nb_planete'],index='an_dec
 tab[mask1]['methode_decouverte'].unique()
 
 # %%
+
+# %%
