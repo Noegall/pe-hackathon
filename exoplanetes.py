@@ -56,3 +56,29 @@ by_nb_etoile=tab.groupby(by=['nb_etoile'])
 by_nb_etoile.size()
 
 # %%
+tab['labo'].unique()
+
+# %%
+tab['methode_decouverte'].unique()
+
+# %%
+by_methode=tab.groupby(by='methode_decouverte')
+
+
+# %%
+by_methode.size()
+
+# %%
+#On étudie les planètes découvertes par le laboratoire de haute provence
+mask1=tab['labo']=='Haute-Provence Observatory'
+tab[mask1]
+
+# %%
+#On cherche le nombre de planètes, d'étoiles et de lunes découvertes par le labo étudié chaque année
+tab[mask1].pivot_table(values=['nb_etoile','nb_lune','nb_planete'],index='an_decouverte', columns='labo',aggfunc='sum')
+
+# %%
+#Quelles sont les méthodes utilisées par ce labo?
+tab[mask1]['methode_decouverte'].unique()
+
+# %%
