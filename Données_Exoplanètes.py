@@ -68,27 +68,20 @@ summary_rade
 
 # %% [markdown]
 # #On veut analyser les données pour les exoplanètes dont on connaît les masse et rayon
-# #On créer donc un nouveau dataframe contenant seulement les exoplanètes pour
-# #lesquelles les données de masse et rayon sont connues
-# #ensuite on regardera la technologie utilisée pour la découverte de l'exoplanète
+# #On créé donc un nouveau dataframe contenant les exoplanètes avec les données de masse et rayon et les technologies et ensuite on regardera la technologie utilisée pour la découverte de l'exoplanète pour voir s'il y a corrélation entre connaissance de la masse/rayon et la manière dont la planète a été découverte
 
 # %%
 df_new = df_donnees.merge(df_decouverte)
 df_new.head(2)
 
 # %%
-df_new['pl_masse'].drop(axis=0, inplace=True)
-df_new['pl_rade'].drop(axis=0, inplace=True)
-df.dropna(axis=0, how='all', inplace=True)
-df_new.head(10)
+#avant cela, on a remarqué que la masse était en type object
+#on modifie cela
+df_new['pl_masse'] = pd.to_numeric(df['pl_masse'], errors='coerce')
+df_new['pl_masse'].dtypes
 
 # %%
-# pd.DataFrame.drop?
-
-# %%
-df.pivot_table(
-    values=['pl_masse', 'pl_rade', 'disc_telescope', 'disc_instrument'],
-    index='pl_name'
+df_new.pivot_table(
+    values=['pl_masse', 'pl_rade'],
+    index='disc_instrument'
 )
-
-# %%
