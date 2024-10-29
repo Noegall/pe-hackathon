@@ -11,6 +11,7 @@ ax = a.plot("pl_masse","pl_rade",style="xb",logx=True,ms=1)
 b.plot("pl_masse","pl_rade",style="or",logx=True,ms=1, ax=ax)
 
 
+#le graph ressemble fortmement à ce qu'on a sur le site web
 c = df[["pl_orbper","pl_insol","tran_flag"]][df["tran_flag"] == 1]
 d = df[["pl_orbper","pl_insol","tran_flag"]][df["tran_flag"] == 0]
 ax = c.plot("pl_orbper","pl_insol",style="xb",loglog=True,ms=1)
