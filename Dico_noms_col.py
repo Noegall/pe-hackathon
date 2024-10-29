@@ -26,6 +26,6 @@ for i in range(287):
     dico[content[0]] = content[1].lstrip().rstrip()
 
 # %%
-dico['pl_name']
+dico['rv_flag']
 
 # %%
