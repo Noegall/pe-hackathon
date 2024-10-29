@@ -32,6 +32,7 @@ df = df.drop("dkin_flag",axis="columns")
 df = df.drop_duplicates()
 
 # +
+# nombre de découvertes par années
 dico = {}
 df1 = df['disc_year']
 for c in df1:
@@ -44,7 +45,7 @@ for c in df1:
 df2 = pd.DataFrame(dict(years = list(dico.keys()),number = list(dico.values())))
 df2 = df2.sort_values('years')
 
-plt.bar(years, number, data=df2, tick_label=years, title="Nombre d'exoplanètes découvertes par années")
+plt.bar(years, number, data=df2, tick_label=years)
 plt.xticks(rotation=60, ha='right')
 plt.show()
 # -
