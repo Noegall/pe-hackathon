@@ -20,7 +20,9 @@ import pandas as pd
 df=pd.read_csv('PS_2024.10.29_06.08.28.csv', skiprows =291)
 
 # %%
-df.head()
+df.shape
+
+
 
 # %%
 df.columns
@@ -33,8 +35,8 @@ tab.head()
 
 # %%
 #Analyse de l'année de découverte
-print(tab['disc_year'].dtypes)
-print(tab['disc_year'].describe())
+print(tab['an_decouverte'].dtypes)
+print(tab['an_decouverte'].describe())
 
 # %%
 #Etude des données manquantes
@@ -42,5 +44,15 @@ tab.isna().describe()
 
 
 # %%
+#Données sur le nombre de planète, d'étoiles et de lune
+tab[['nb_etoile','nb_planete','nb_lune']].describe()
+
+# %%
+#On veut étudier le nombre d'étoiles des planètes
+tab['nb_etoile'].unique()
+by_nb_etoile=tab.groupby(by=['nb_etoile'])
+
+# %%
+by_nb_etoile.size()
 
 # %%
